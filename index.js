@@ -11,6 +11,7 @@ app.use(bodyParser.json());
 
 app.get('/products', productController.getAll);
 app.get('/products/:id', productController.getById);
+app.post('/products', productController.newProduct);
 
 app.get('/sales', saleController.getAll);
 app.get('/sales/:id', saleController.getById);
