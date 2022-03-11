@@ -19,21 +19,21 @@ const response = { id: sale.insertId, itemsSold: createdSales };
 return response;
 };
 
-//  const updateSale = async (id, updatedSales) => {
-//   const saleById = await getById(id);
+ const updateSale = async (id, updatedSales) => {
+  const saleById = await getById(id);
 
-//   if (!saleById.length) {
-//     return { message: 'Sale not found' };
-//   }
-//   updatedSales.forEach(async ({ productId, quantity }) => {
-//     await saleModel.updateSale(id, productId, quantity);
-//     return { id, productId, quantity };
-//   });
-// };
+  if (!saleById.length) {
+    return { message: 'Sale not found' };
+  }
+  updatedSales.forEach(async ({ productId, quantity }) => {
+    await saleModel.updateSale(id, productId, quantity);
+    return { id, productId, quantity };
+  });
+};
 
 module.exports = {
   getAll,
   getById,
   newSale,
-// updateSale,
+updateSale,
 }; 
