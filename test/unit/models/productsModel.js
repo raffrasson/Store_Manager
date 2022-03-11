@@ -38,8 +38,14 @@ describe('pega por id model', () => {
 
 describe('novo produto', () => {
 
-  it('retorna um array', async () => {
+  it('retorna um objeto', async () => {
     const response = await model.newProduct('x',2);
     expect(response).to.be.an('object');
   })
+
+  it('retorna um objeto não vazio', async () => {
+    const response = await model.newProduct('x',2);
+    expect(response).to.not.be.empty;
+  })
+
   })

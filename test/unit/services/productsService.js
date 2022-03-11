@@ -10,6 +10,7 @@ const mockedProducts = [
   { id: 3, name: 'Escudo do Capitão América', quantity: 30 },
 ]
 
+
 describe('pega todos os produtos do banco', () => {
   before(() => {
     sinon.stub(model, 'getById').resolves(mockedProducts)
@@ -27,13 +28,20 @@ describe('pega todos os produtos do banco', () => {
     expect(array).to.be.deep.equal(mockedProducts);
   })
 
+  it('array.length > 0', async () => {
+    const products = await model.getAll();
+
+    expect(products).to.not.be.empty;
+  });
+
+
   it('cada elemento do array possui id, name e quantity', async () => {
     const [array] = await service.getAll();
     expect(array).to.have.all.keys('id', 'name', 'quantity');
   })
 })
 
-describe('pega por id serv', () => {
+describe('pega por id', () => {
 
   it('o id tem produto correspondente', async () => {
     const produto = await service.getById(1);
@@ -45,4 +53,10 @@ describe('pega por id serv', () => {
     const array = await service.getAll();
     expect(array).to.be.an('array');
   })
+
+  it('objeto não é vazio', async () => {
+    const [product] = await model.getById(1);
+
+    expect(product).to.not.be.empty;
+  });
 })

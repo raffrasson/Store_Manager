@@ -22,7 +22,7 @@ describe('pega todos os produtos do banco', () => {
   })
 })
 
-describe('pega por id model', () => {
+describe('pega por id', () => {
 
   it('o id tem produto correspondente', async () => {
     const produto = await model.getById(1);
@@ -34,12 +34,13 @@ describe('pega por id model', () => {
     expect(array).to.have.all.keys('productId', 'date', 'quantity', 'saleId');
   })
 })
-describe('nova venda', () => {
+describe('nova venda ', () => {
 
-  it('retorna um objeto', async () => {
-    const response = await model.newSale();
-    expect(response).to.be.an('object');
+  it('retorna um objeto não vazio', async () => {
+    const response = await model.newSale(1,2,2);
+    expect(response).to.not.be.empty;
   })
+
 
   it('cada elemento do array possui productid, date, quantity, saleId', async () => {
     const [array] = await model.getAll();
