@@ -23,12 +23,11 @@ const getById = async (id) => {
   return response;
 };
 
-const newSale = async () => {
+// const updateSale = async () => {
 
-};
+// };
 
 module.exports = {
   getAll,
   getById,
-  newSale,
 };

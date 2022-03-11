@@ -17,7 +17,7 @@ app.delete('/products/:id', productController.deleteProduct);
 
 app.get('/sales', saleController.getAll);
 app.get('/sales/:id', saleController.getById);
-app.post('/sales', saleController.newSale);
+// app.update('/sales', saleController.updateSale);
 
 // não remova esse endpoint, e para o avaliador funcionar
 app.get('/', (_request, response) => {
