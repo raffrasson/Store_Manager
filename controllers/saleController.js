@@ -26,28 +26,28 @@ const getById = async (req, res, next) => {
 const newSale = async (req, res, next) => {
   try {
     const createdSales = await saleService.newSale(req.body);
-console.log(createdSales);
+console.log(req.body);
     return res.status(201).json(createdSales);
   } catch (error) {
     return next(error);
   }
 };
 
-const updateSale = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const updatedSales = req.body;
-    await saleService.updateSale(id, updatedSales);
-    const response = { saleId: Number(id), itemUpdated: updatedSales };
-    return res.status(200).json(response);
-  } catch (error) {
-    return next(error);
-  }
-};
+// const updateSale = async (req, res, next) => {
+//   try {
+//     const { id } = req.params;
+//     const updatedSales = req.body;
+//     await saleService.updateSale(id, updatedSales);
+//     const response = { saleId: Number(id), itemUpdated: updatedSales };
+//     return res.status(200).json(response);
+//   } catch (error) {
+//     return next(error);
+//   }
+// };
 
 module.exports = {
   getAll,
   getById,
   newSale,
-  updateSale,
+  // updateSale,
 };
