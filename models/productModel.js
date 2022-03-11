@@ -14,6 +14,7 @@ const getById = async (id) => {
 const newProduct = async (name, quantity) => {
   const query = 'INSERT INTO products (name, quantity) VALUES (?, ?)';
   const [response] = await connection.execute(query, [name, quantity]);
+  console.log(response);
   return response;
 };
 

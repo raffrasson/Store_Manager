@@ -34,3 +34,15 @@ describe('pega por id', () => {
     expect(array).to.have.all.keys('productId', 'date', 'quantity', 'saleId');
   })
 })
+describe('nova venda', () => {
+
+  it('retorna um objeto', async () => {
+    const response = await model.newSale();
+    expect(response).to.be.an('object');
+  })
+
+  it('cada elemento do array possui productid, date, quantity, saleId', async () => {
+    const [array] = await model.getAll();
+    expect(array).to.have.all.keys('productId', 'date', 'quantity', 'saleId');
+  })
+})

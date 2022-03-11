@@ -30,7 +30,7 @@ describe('pega todos os produtos do banco', () => {
 
   it('cada elemento do array possui id, name e quantity', async () => {
     const array = await service.getAll();
-    expect(array[1]).to.have.all.keys('productId', 'date', 'quantity', 'saleId');
+    expect(array).to.be.an('array');
   })
 })
 

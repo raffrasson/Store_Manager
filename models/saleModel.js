@@ -39,6 +39,7 @@ const newSale = async (saleId, productId, quantity) => {
     VALUES (?, ?, ?)`;
   
   const [response] = await connection.execute(query, [saleId, productId, quantity]);
+  console.log([response]);
   return response;
   };
   

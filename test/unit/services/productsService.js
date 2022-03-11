@@ -5,9 +5,9 @@ const model = require('../../../models/productModel')
 const service = require('../../../services/productService')
 
 const mockedProducts = [
-  {id: 1, name: 'redbull', quantity: 10},
-  {id: 2, name: 'cafe', quantity: 20},
-  {id: 3, name: 'guarana', quantity: 30}
+  { id: 1, name: 'Martelo de Thor', quantity: 10 },
+  { id: 2, name: 'Traje de encolhimento', quantity: 20 },
+  { id: 3, name: 'Escudo do Capitão América', quantity: 30 },
 ]
 
 describe('pega todos os produtos do banco', () => {
@@ -43,6 +43,6 @@ describe('pega por id', () => {
 
   it('cada elemento do array possui id, name e quantity', async () => {
     const array = await service.getAll();
-    expect(array[1]).to.have.all.keys('id', 'name', 'quantity');
+    expect(array).to.be.an('array');
   })
 })

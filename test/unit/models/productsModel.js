@@ -33,4 +33,13 @@ describe('pega por id', () => {
     const [array] = await model.getAll();
     expect(array).to.have.all.keys('id', 'name', 'quantity');
   })
-})
+
+})  
+
+describe('novo produto', () => {
+
+  it('retorna um array', async () => {
+    const response = await model.newProduct('x',2);
+    expect(response).to.be.an('object');
+  })
+  })
