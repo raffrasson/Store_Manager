@@ -10,23 +10,15 @@ const mockedSales = [
 ]
 
 describe('pega todos os produtos do banco', () => {
-  before(()=>{
-    const execute = [mockedSales];
-
-    sinon.stub(connection, 'execute').resolves(execute);
-  })
-  after(async () => {
-    connection.execute.restore();
-  });
 
   it('retorna os produtos num array', async () => {
     const array = await model.getAll();
     expect(array).to.be.an('array');
   })
 
-  it('cada elemento do array possui id, name e quantity', async () => {
+  it('cada elemento do array possui productId, date, quantity, saleId', async () => {
     const [array] = await model.getAll();
-    expect(array).to.have.all.keys('id', 'name', 'quantity');
+    expect(array).to.have.all.keys('productId', 'date', 'quantity', 'saleId');
   })
 })
 
@@ -34,11 +26,11 @@ describe('pega por id', () => {
 
   it('o id tem produto correspondente', async () => {
     const produto = await model.getById(1);
-    expect(result).to.be.an('array');
+    expect(produto).to.be.an('array');
   })
 
-  it('cada elemento do array possui id, name e quantity', async () => {
+  it('cada elemento do array possui productid, date, quantity, saleId', async () => {
     const [array] = await model.getAll();
-    expect(array).to.have.all.keys('id', 'name', 'quantity');
+    expect(array).to.have.all.keys('productId', 'date', 'quantity', 'saleId');
   })
 })

@@ -36,9 +36,9 @@ describe('pega todos os produtos do banco', () => {
 describe('pega por id', () => {
 
   it('o id tem produto correspondente', async () => {
-    const produto = await service.getById(1);
-    expect(result).to.be.an('array');
-    expect(produto).to.be.deep.equal(mockedProducts[1]);
+    const produto = await service.getById();
+    expect(produto).to.be.an('array');
+    expect(produto).to.be.deep.equal(mockedProducts);
   })
 
   it('cada elemento do array possui id, name e quantity', async () => {

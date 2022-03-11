@@ -29,8 +29,8 @@ describe('pega todos os produtos do banco', () => {
   })
 
   it('cada elemento do array possui id, name e quantity', async () => {
-    const [array] = await service.getAll();
-    expect(array).to.have.all.keys('id', 'name', 'quantity');
+    const array = await service.getAll();
+    expect(array[1]).to.have.all.keys('productId', 'date', 'quantity', 'saleId');
   })
 })
 
@@ -38,12 +38,11 @@ describe('pega por id', () => {
 
   it('o id tem produto correspondente', async () => {
     const produto = await service.getById(1);
-    expect(result).to.be.an('array');
-    expect(produto).to.be.deep.equal(mockedProducts[1]);
+    expect(produto).to.be.an('array');
   })
 
   it('cada elemento do array possui id, name e quantity', async () => {
-    const array = await service.getAll();
-    expect(array[1]).to.have.all.keys('id', 'name', 'quantity');
+    const [array] = await service.getAll();
+    expect(array).to.have.all.keys('productId', 'date', 'quantity', 'saleId');
   })
 })

@@ -1,9 +1,7 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
 const {connection} = require('../../../models/connection');
-const model = require('../../../controllers/productController')
-
-
+const model = require('../../../controllers/saleController')
 
 describe('pega todos os produtos do banco', () => {
 
