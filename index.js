@@ -5,7 +5,7 @@ const express = require('express');
 const productController = require('./controllers/productController');
 const saleController = require('./controllers/saleController');
 
-const { saleValidation, saleNumbersValidation } = require('./middlewares/salesValidation');
+// const { saleValidation, saleNumbersValidation } = require('./middlewares/salesValidation');
 const { productValidation, productNumbersValidation } = require('./middlewares/productsValidation');
 
 const app = express();
