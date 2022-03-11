@@ -52,7 +52,7 @@ describe('pega por id', () => {
 })
 describe('nova venda ', () => {
   before(() => {
-    sinon.stub(model, 'getById').resolves(mockedSales)
+    sinon.stub(model, 'newSale').resolves(mockedSales)
     sinon.stub(model, 'getAll').resolves(mockedSales)
   })
 

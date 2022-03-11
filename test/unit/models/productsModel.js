@@ -60,8 +60,7 @@ describe('novo produto', () => {
 
 
   before(() => {
-    sinon.stub(model, 'getById').resolves(mockedProducts)
-    sinon.stub(model, 'getAll').resolves(mockedProducts)
+    sinon.stub(model, 'newProduct').resolves(mockedProducts)
   })
 
   after(()=> {
