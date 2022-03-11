@@ -22,7 +22,7 @@ describe('pega todos os produtos do banco', () => {
   })
 })
 
-describe('pega por id', () => {
+describe('pega por id model', () => {
 
   it('o id tem produto correspondente', async () => {
     const produto = await model.getById(1);

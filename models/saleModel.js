@@ -20,6 +20,7 @@ const getById = async (id) => {
   WHERE salesProducts.sale_id = ?
   ORDER BY productId`;
   const [response] = await connection.execute(query, [id]);
+  console.log([response]);
   return response;
 };
 
@@ -39,7 +40,7 @@ const newSale = async (saleId, productId, quantity) => {
     VALUES (?, ?, ?)`;
   
   const [response] = await connection.execute(query, [saleId, productId, quantity]);
-  console.log([response]);
+
   return response;
   };
   

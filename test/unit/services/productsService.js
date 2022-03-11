@@ -33,12 +33,12 @@ describe('pega todos os produtos do banco', () => {
   })
 })
 
-describe('pega por id', () => {
+describe('pega por id serv', () => {
 
   it('o id tem produto correspondente', async () => {
-    const produto = await service.getById();
+    const produto = await service.getById(1);
     expect(produto).to.be.an('array');
-    expect(produto).to.be.deep.equal(mockedProducts);
+    expect(produto).to.be.deep.equal([mockedProducts[0]]);
   })
 
   it('cada elemento do array possui id, name e quantity', async () => {

@@ -34,7 +34,7 @@ describe('pega todos os produtos do banco', () => {
   })
 })
 
-describe('pega por id', () => {
+describe('pega por id service', () => {
 
   it('o id tem produto correspondente', async () => {
     const produto = await service.getById(1);
