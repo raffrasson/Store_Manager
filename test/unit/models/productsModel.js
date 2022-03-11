@@ -58,6 +58,19 @@ describe('pega por id model', () => {
 
 describe('novo produto', () => {
 
+
+  before(() => {
+    sinon.stub(model, 'getById').resolves(mockedProducts)
+    sinon.stub(model, 'getAll').resolves(mockedProducts)
+  })
+
+  after(()=> {
+    model.getById.restore()
+    model.getAll.restore()
+  })
+
+
+
   it('retorna um objeto', async () => {
     const response = await model.newProduct('x',2);
     expect(response).to.be.an('object');
