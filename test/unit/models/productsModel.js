@@ -64,15 +64,14 @@ describe('novo produto', () => {
   })
 
   after(()=> {
-    model.getById.restore()
-    model.getAll.restore()
+    model.newProduct.restore()
   })
 
 
 
-  it('retorna um objeto', async () => {
+  it('retorna um array', async () => {
     const response = await model.newProduct('x',2);
-    expect(response).to.be.an('object');
+    expect(response).to.be.an('array');
   })
 
   it('retorna um objeto não vazio', async () => {

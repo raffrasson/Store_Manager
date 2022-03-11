@@ -57,7 +57,7 @@ describe('nova venda ', () => {
   })
 
   after(()=> {
-    model.getById.restore()
+    model.newSale.restore()
     model.getAll.restore()
   })
 
