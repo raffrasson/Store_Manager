@@ -35,7 +35,15 @@ describe('pega todos os produtos do banco', () => {
 })
 
 describe('pega por id service', () => {
+  before(() => {
+    sinon.stub(model, 'getById').resolves(mockedSales)
+    sinon.stub(model, 'getAll').resolves(mockedSales)
+  })
 
+  after(()=> {
+    model.getById.restore()
+    model.getAll.restore()
+  })
   it('o id tem produto correspondente', async () => {
     const produto = await service.getById(1);
     expect(produto).to.be.an('array');
@@ -43,6 +51,6 @@ describe('pega por id service', () => {
 
   it('cada elemento do array possui id, name e quantity', async () => {
     const [array] = await service.getAll();
-    expect(array).to.have.all.keys('productId', 'date', 'quantity', 'saleId');
+    expect(array).to.have.all.keys('id', 'productId', 'date', 'quantity', 'saleId');
   })
 })

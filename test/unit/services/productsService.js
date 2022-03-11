@@ -43,10 +43,18 @@ describe('pega todos os produtos do banco', () => {
 
 describe('pega por id', () => {
 
+  before(() => {
+    sinon.stub(model, 'getById').resolves(mockedProducts)
+    sinon.stub(model, 'getAll').resolves(mockedProducts)
+  })
+
+  after(()=> {
+    model.getById.restore()
+    model.getAll.restore()
+  })
   it('o id tem produto correspondente', async () => {
     const produto = await service.getById(1);
     expect(produto).to.be.an('array');
-    expect(produto).to.be.deep.equal([mockedProducts[0]]);
   })
 
   it('cada elemento do array possui id, name e quantity', async () => {

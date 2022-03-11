@@ -10,6 +10,15 @@ const mockedProducts = [
 ]
 
 describe('pega todos os produtos do banco', () => {
+  before(() => {
+    sinon.stub(model, 'getById').resolves(mockedProducts)
+    sinon.stub(model, 'getAll').resolves(mockedProducts)
+  })
+
+  after(()=> {
+    model.getById.restore()
+    model.getAll.restore()
+  })
 
   it('retorna os produtos num array', async () => {
     const array = await model.getAll();
@@ -23,6 +32,17 @@ describe('pega todos os produtos do banco', () => {
 })
 
 describe('pega por id model', () => {
+
+  before(() => {
+    sinon.stub(model, 'getById').resolves(mockedProducts)
+    sinon.stub(model, 'getAll').resolves(mockedProducts)
+  })
+
+  after(()=> {
+    model.getById.restore()
+    model.getAll.restore()
+  })
+
 
   it('o id tem produto correspondente', async () => {
     const produto = await model.getById(1);

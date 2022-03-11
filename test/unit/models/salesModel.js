@@ -10,7 +10,15 @@ const mockedSales = [
 ]
 
 describe('pega todos os produtos do banco', () => {
+  before(() => {
+    sinon.stub(model, 'getById').resolves(mockedSales)
+    sinon.stub(model, 'getAll').resolves(mockedSales)
+  })
 
+  after(()=> {
+    model.getById.restore()
+    model.getAll.restore()
+  })
   it('retorna os produtos num array', async () => {
     const array = await model.getAll();
     expect(array).to.be.an('array');
@@ -18,12 +26,20 @@ describe('pega todos os produtos do banco', () => {
 
   it('cada elemento do array possui productId, date, quantity, saleId', async () => {
     const [array] = await model.getAll();
-    expect(array).to.have.all.keys('productId', 'date', 'quantity', 'saleId');
+    expect(array).to.have.all.keys('id', 'productId', 'date', 'quantity', 'saleId');
   })
 })
 
 describe('pega por id', () => {
+  before(() => {
+    sinon.stub(model, 'getById').resolves(mockedSales)
+    sinon.stub(model, 'getAll').resolves(mockedSales)
+  })
 
+  after(()=> {
+    model.getById.restore()
+    model.getAll.restore()
+  })
   it('o id tem produto correspondente', async () => {
     const produto = await model.getById(1);
     expect(produto).to.be.an('array');
@@ -31,10 +47,19 @@ describe('pega por id', () => {
 
   it('cada elemento do array possui productid, date, quantity, saleId', async () => {
     const [array] = await model.getAll();
-    expect(array).to.have.all.keys('productId', 'date', 'quantity', 'saleId');
+    expect(array).to.have.all.keys('id', 'productId', 'date', 'quantity', 'saleId');
   })
 })
 describe('nova venda ', () => {
+  before(() => {
+    sinon.stub(model, 'getById').resolves(mockedSales)
+    sinon.stub(model, 'getAll').resolves(mockedSales)
+  })
+
+  after(()=> {
+    model.getById.restore()
+    model.getAll.restore()
+  })
 
   it('retorna um objeto não vazio', async () => {
     const response = await model.newSale(1,2,2);
@@ -44,6 +69,6 @@ describe('nova venda ', () => {
 
   it('cada elemento do array possui productid, date, quantity, saleId', async () => {
     const [array] = await model.getAll();
-    expect(array).to.have.all.keys('productId', 'date', 'quantity', 'saleId');
+    expect(array).to.have.all.keys('id', 'productId', 'date', 'quantity', 'saleId');
   })
 })
